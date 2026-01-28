@@ -3,37 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 뉴스</title>
+    <title>AI 최신 뉴스 블로그</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>AI 뉴스</h1>
-        <p>매일 최신 AI 뉴스를 확인하세요</p>
-    </header>
-    <div class="container">
-        <aside class="sidebar sidebar-left">
-            <ins class="kakao_ad_area" style="display:none;"
+    <!-- 좌측 광고 -->
+    <div class="ad-left">
+        <ins class="kakao_ad_area" style="display:none;"
             data-ad-unit = "DAN-2dj7nXQHISapgnKP"
             data-ad-width = "160"
             data-ad-height = "600"></ins>
-            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-        </aside>
-        <main>
-            <div id="news-container">
-                <!-- 뉴스가 여기에 표시됩니다 -->
-            </div>
-        </main>
-        <aside class="sidebar sidebar-right">
-            <ins class="kakao_ad_area" style="display:none;"
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </div>
+
+    <header>
+        <h1>AI 최신 뉴스 블로그</h1>
+        <p>인공지능 분야의 최신 뉴스를 한눈에!</p>
+    </header>
+
+    <main>
+        <section id="news-container">
+            <!-- 뉴스 기사들이 여기에 동적으로 추가됩니다 -->
+        </section>
+    </main>
+
+    <!-- 우측 광고 -->
+    <div class="ad-right">
+        <ins class="kakao_ad_area" style="display:none;"
             data-ad-unit = "DAN-nYs4F5EDF8HlFrhS"
             data-ad-width = "160"
             data-ad-height = "600"></ins>
-            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-        </aside>
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     </div>
+
+    <!-- 상세 정보 모달 -->
+    <div id="news-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modal-image" src="" alt="">
+            <h2 id="modal-title"></h2>
+            <div class="modal-meta">
+                <span id="modal-source"></span>
+                <span id="modal-date"></span>
+            </div>
+            <p id="modal-summary"></p>
+            <div id="modal-full-content">
+                <h3>📰 상세 내용</h3>
+                <p id="modal-details"></p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; ALL RIGHT RESERVED</p>
+        <p>&copy; 2026 AI 뉴스 블로그. All Right Reserved.</p>
     </footer>
     <script src="script.js"></script>
 </body>
