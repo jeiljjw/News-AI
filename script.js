@@ -1,10 +1,9 @@
-// NewsAPI 설정
-const API_KEY = 'b0acaf4e5d3e4fa189beb28a5c1d5816'; // 여기에 자신의 NewsAPI 키를 입력하세요
-const API_URL = `https://newsapi.org/v2/everything?q=(GPT+OR+GEMINI+OR+CLAUDE)&language=ko&sortBy=publishedAt&apiKey=${API_KEY}`;
+// GNews API 설정 (배포 환경에서도 작동하는 무료 API)
+const API_KEY = '7d70d36fd9a3a1c2b5471c0fa2ce65a8'; // 여기에 자신의 GNews API 키를 입력하세요
+const API_URL = `https://gnews.io/api/v4/search?q=GPT OR GEMINI OR CLAUDE&lang=ko&max=20&apikey=${API_KEY}`;
 
 document.addEventListener('DOMContentLoaded', function() {
     loadNews();
-    scheduleDailyNewsUpdate();
 });
 
 async function loadNews() {
@@ -14,7 +13,7 @@ async function loadNews() {
         const response = await fetch(API_URL);
         const data = await response.json();
 
-        if (data.status === 'ok') {
+        if (data.articles && data.articles.length > 0) {
             displayNews(data.articles);
         } else {
             newsContainer.innerHTML = '<p>뉴스를 불러오는 중 오류가 발생했습니다.</p>';
@@ -29,11 +28,12 @@ function displayNews(articles) {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
 
-    articles.slice(0, 20).forEach(article => {
+    articles.forEach(article => {
         const newsItem = document.createElement('div');
         newsItem.className = 'news-item';
 
-        const imageUrl = article.urlToImage || 'https://via.placeholder.com/300x200?text=No+Image';
+        // GNews API는 'image' 필드를 사용합니다
+        const imageUrl = article.image || 'https://via.placeholder.com/300x200?text=No+Image';
 
         newsItem.innerHTML = `
             <img src="${imageUrl}" alt="${article.title}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
