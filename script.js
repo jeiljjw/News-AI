@@ -136,30 +136,3 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     displayNews(dummyNews);
 });
-
-// 실제 뉴스 API를 사용하려면 아래 함수를 수정하세요
-/*
-async function fetchNewsFromAPI() {
-    try {
-        // 예시: NewsAPI 사용
-        const response = await fetch('https://newsapi.org/v2/everything?q=artificial+intelligence&apiKey=YOUR_API_KEY');
-        const data = await response.json();
-        const newsData = data.articles.map(article => ({
-            title: article.title,
-            summary: article.description,
-            details: article.content,
-            image: article.urlToImage || 'https://via.placeholder.com/300x200?text=No+Image',
-            date: new Date(article.publishedAt).toLocaleDateString('ko-KR'),
-            source: article.source.name
-        }));
-        displayNews(newsData);
-    } catch (error) {
-        console.error('뉴스를 불러오는 중 오류 발생:', error);
-        // 오류 시 더미 데이터 표시
-        displayNews(dummyNews);
-    }
-}
-
-// API 사용 시 주석 해제
-// document.addEventListener('DOMContentLoaded', fetchNewsFromAPI);
-*/
